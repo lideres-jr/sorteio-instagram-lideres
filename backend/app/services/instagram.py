@@ -14,9 +14,14 @@ class InstagramAPIError(RuntimeError):
 
 
 class InstagramClient:
-    def __init__(self, access_token: str | None, api_version: str) -> None:
+    def __init__(
+        self,
+        access_token: str | None,
+        api_version: str,
+        graph_base_url: str = "https://graph.facebook.com",
+    ) -> None:
         self._access_token = access_token
-        self._base_url = f"https://graph.facebook.com/{api_version}"
+        self._base_url = f"{graph_base_url.rstrip('/')}/{api_version}"
 
     async def fetch_comments(self, media_id: str | None) -> list[CommentEntry]:
         if not self._access_token or not media_id:

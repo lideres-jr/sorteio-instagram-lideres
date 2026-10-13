@@ -27,6 +27,8 @@ def get_draw_service() -> DrawService:
 def get_instagram_client() -> InstagramClient:
     settings = get_settings()
     return InstagramClient(
-        settings.instagram_access_token, settings.instagram_api_version
+        settings.instagram_access_token,
+        settings.instagram_api_version,
+        settings.instagram_graph_base_url,
     )
 

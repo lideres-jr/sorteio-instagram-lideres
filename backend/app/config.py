@@ -12,7 +12,8 @@ class Settings(BaseSettings):
     app_cors_origins: list[str] = ["http://localhost:5173"]
     instagram_access_token: str | None = None
     instagram_media_id: str | None = None
-    instagram_api_version: str = "v24.0"
+    instagram_api_version: str = "v26.0"
+    instagram_graph_base_url: str = "https://graph.facebook.com"
     storage_backend: Literal["memory", "supabase"] = "memory"
     supabase_url: str | None = None
     supabase_key: str | None = None
