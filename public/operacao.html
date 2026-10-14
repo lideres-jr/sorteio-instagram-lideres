@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Operação · Sorteio Líderes</title>
+<link rel="icon" href="/img/logo-jr.png">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/operacao.css">
+</head>
+<body>
+<header class="topo">
+  <div class="topo-marca">
+    <img src="/img/logo-jr.png" alt="Jr." class="logo">
+    <strong class="topo-titulo">Sorteio Líderes</strong>
+    <span class="topo-sub">Tela de operação</span>
+  </div>
+  <div class="topo-acoes">
+    <a class="link-telao" href="/projecao.html" target="sorteio-telao">Abrir telão ↗</a>
+    <span class="pilula" id="statusIg"><span class="ponto"></span><span id="statusIgTexto">Conectando…</span></span>
+  </div>
+</header>
+
+<main class="grade">
+  <section class="cartao" aria-labelledby="tParticipantes">
+    <h1 id="tParticipantes">Participantes</h1>
+    <p class="sub">Comentários da publicação fixada. Cada comentário é uma chance no sorteio.</p>
+
+    <div class="linha-busca">
+      <button class="btn btn-primario" id="btnBuscar">Buscar comentários</button>
+      <span class="meta" id="ultimaBusca">Nenhuma busca ainda</span>
+      <label class="auto"><input type="checkbox" id="autoBusca"> Atualizar a cada 1 min</label>
+    </div>
+
+    <div class="aviso" id="avisoParticipantes" hidden></div>
+
+    <div class="contagem">
+      <span class="numero" id="numChances">0</span>
+      <span class="contagem-legenda">
+        <span id="legendaChances">chances no sorteio</span>
+        <small id="detalheChances">Nenhum comentário carregado</small>
+      </span>
+    </div>
+
+    <ul class="lista" id="listaEntradas" aria-label="Comentários concorrendo">
+      <li class="lista-vazia">Clique em <strong>Buscar comentários</strong> para trazer quem já comentou.</li>
+    </ul>
+
+    <hr>
+
+    <label class="rotulo" for="listaManual">API fora do ar? Cole a lista de perfis</label>
+    <p class="ajuda">Um @perfil por linha, uma linha para cada comentário. A lista colada substitui a atual.</p>
+    <textarea id="listaManual" rows="5" placeholder="@perfil1&#10;@perfil2&#10;@perfil3"></textarea>
+    <div class="linha-manual">
+      <button class="btn btn-secundario" id="btnManual">Usar esta lista</button>
+      <span class="meta" id="retornoManual"></span>
+    </div>
+  </section>
+
+  <aside class="cartao cartao-sorteio" aria-labelledby="tSorteio">
+    <h2 id="tSorteio">Sorteio</h2>
+    <button class="btn btn-primario btn-grande" id="btnSortear" disabled>Sortear</button>
+    <div class="aviso" id="avisoSorteio" hidden></div>
+
+    <div class="atual" id="painelAtual" hidden>
+      <div class="atual-rotulo" id="atualRotulo">Sorteado(a) agora</div>
+      <div class="atual-nome" id="atualNome"></div>
+      <div class="atual-chances" id="atualChances"></div>
+      <p class="atual-instrucao" id="atualInstrucao">Confira o Story na DM do Instagram da Líderes antes de confirmar.</p>
+      <div class="atual-acoes" id="acoesPendente">
+        <button class="btn btn-primario" id="btnConfirmar">Confirmado</button>
+        <button class="btn btn-secundario" id="btnNovamente">Não postou, sortear de novo</button>
+      </div>
+      <div class="atual-acoes" id="acoesFinal" hidden>
+        <button class="btn btn-secundario" id="btnEspera">Voltar o telão para a tela de espera</button>
+      </div>
+    </div>
+
+    <div class="historico">
+      <div class="historico-titulo">Já sorteados</div>
+      <ul id="listaSorteados"><li class="lista-vazia">Ninguém ainda.</li></ul>
+    </div>
+
+    <button class="btn-link" id="btnZerar">Zerar sorteios e lista</button>
+  </aside>
+</main>
+
+<script src="/js/comum.js"></script>
+<script src="/js/operacao.js"></script>
+</body>
+</html>

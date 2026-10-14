@@ -1,0 +1,120 @@
+/* Tela pensada em 1920×1080; --u escala tudo para qualquer projetor mantendo a proporção. */
+:root { --u: min(100vw / 1920, 100vh / 1080); }
+
+html, body { height: 100%; overflow: hidden; background: var(--navy); color: #fff; }
+body { display: grid; place-items: center; cursor: none; }
+body:hover { cursor: default; }
+
+.palco {
+  position: relative;
+  width: calc(1920 * var(--u)); height: calc(1080 * var(--u));
+  padding: calc(104 * var(--u)) calc(112 * var(--u)) calc(88 * var(--u));
+  display: flex; flex-direction: column;
+}
+
+/* Topo */
+.topo { display: flex; justify-content: space-between; align-items: center; height: calc(56 * var(--u)); }
+.marca { display: flex; align-items: center; gap: calc(28 * var(--u)); }
+.logo { width: calc(96 * var(--u)); height: calc(96 * var(--u)); margin-left: calc(-14 * var(--u)); margin-right: calc(-20 * var(--u)); }
+.evento, .sobretitulo, .pilula, .status-rotulo {
+  text-transform: uppercase; letter-spacing: 0.16em; font-weight: 500;
+}
+.evento { font-size: calc(28 * var(--u)); color: var(--navy-muted); }
+.pilula {
+  display: inline-flex; align-items: center; gap: calc(18 * var(--u));
+  border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 999px;
+  padding: calc(14 * var(--u)) calc(32 * var(--u)); font-size: calc(24 * var(--u));
+}
+.ponto { width: calc(12 * var(--u)); height: calc(12 * var(--u)); border-radius: 50%; background: #fff; }
+.palco[data-fase="espera"] .ponto,
+.palco[data-fase="sorteando"] .ponto { animation: piscar 1.6s ease-in-out infinite; }
+@keyframes piscar { 50% { opacity: .25; } }
+
+.sobretitulo { font-size: calc(26 * var(--u)); color: var(--navy-muted); }
+
+.cena { flex: 1; display: flex; }
+
+/* ---------- Espera ---------- */
+.cena-espera { align-items: center; justify-content: space-between; gap: calc(120 * var(--u)); padding-top: calc(40 * var(--u)); }
+.espera-texto { flex: 1; max-width: calc(1056 * var(--u)); }
+.titulo {
+  font-family: var(--serif); font-weight: 700; letter-spacing: -0.015em;
+  font-size: calc(104 * var(--u)); line-height: 1.02;
+  margin: calc(40 * var(--u)) 0 calc(44 * var(--u));
+}
+.passos { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--navy-line); }
+.passos li {
+  display: flex; align-items: baseline; gap: calc(36 * var(--u));
+  padding: calc(38 * var(--u)) 0; border-bottom: 1px solid var(--navy-line);
+  font-size: calc(46 * var(--u)); font-weight: 500; letter-spacing: -0.01em;
+}
+.passo-num { font-family: var(--serif); color: rgba(225, 230, 248, 0.55); font-size: calc(52 * var(--u)); }
+
+.contador {
+  width: calc(520 * var(--u)); flex: none;
+  background: var(--navy-2); border: 1px solid rgba(255,255,255,0.08); border-radius: calc(6 * var(--u));
+  padding: calc(56 * var(--u)) calc(48 * var(--u)) calc(52 * var(--u));
+}
+.contador .sobretitulo { white-space: nowrap; font-size: calc(24 * var(--u)); }
+.contador-num {
+  font-family: var(--serif); font-weight: 700; font-variant-numeric: tabular-nums;
+  font-size: calc(200 * var(--u)); line-height: 1; letter-spacing: -0.02em;
+  margin: calc(28 * var(--u)) 0 calc(36 * var(--u));
+}
+.contador-num.pulsa { animation: subir .7s cubic-bezier(.2,.9,.3,1.2); }
+@keyframes subir { 0% { transform: translateY(calc(18 * var(--u))); opacity: .3; } 100% { transform: none; opacity: 1; } }
+.contador-texto { margin: 0; font-size: calc(28 * var(--u)); line-height: 1.35; color: var(--navy-muted); }
+
+/* ---------- Sorteando / resultado ---------- */
+.cena-resultado { flex-direction: column; justify-content: center; padding-top: calc(48 * var(--u)); }
+.nome-caixa { height: calc(230 * var(--u)); display: flex; align-items: center; overflow: hidden; margin: calc(28 * var(--u)) 0 calc(16 * var(--u)); }
+.nome {
+  font-family: var(--serif); font-weight: 700; letter-spacing: -0.02em;
+  white-space: nowrap; line-height: 1.1; width: 100%;
+}
+.palco[data-fase="sorteando"] .nome { color: rgba(255,255,255,0.78); }
+.nome.revelado { animation: revelar .9s cubic-bezier(.16,1,.3,1); }
+@keyframes revelar {
+  0% { transform: scale(.92); opacity: 0; filter: blur(calc(8 * var(--u))); }
+  100% { transform: none; opacity: 1; filter: none; }
+}
+
+.regua { position: relative; height: 1px; background: var(--navy-line); }
+.regua-progresso { position: absolute; left: 0; top: -1px; height: 3px; width: 0; background: #fff; }
+.palco[data-fase="resultado"] .regua-progresso { width: 100%; height: 1px; top: 0; background: rgba(255,255,255,0.35); transition: none; }
+
+.resultado-rodape {
+  display: flex; justify-content: space-between; align-items: center; gap: calc(80 * var(--u));
+  margin-top: calc(36 * var(--u)); min-height: calc(144 * var(--u));
+  transition: opacity .6s ease .3s;
+}
+.palco[data-fase="sorteando"] .resultado-rodape { opacity: 0; transition: none; }
+.resultado-msg { margin: 0; max-width: calc(900 * var(--u)); font-size: calc(40 * var(--u)); line-height: 1.32; font-weight: 500; letter-spacing: -0.01em; }
+.status {
+  background: #fff; color: var(--navy); border-radius: calc(6 * var(--u));
+  padding: calc(34 * var(--u)) calc(44 * var(--u)); min-width: calc(538 * var(--u));
+}
+.status-rotulo { font-size: calc(20 * var(--u)); color: var(--ink-2); }
+.status-valor { font-family: var(--serif); font-weight: 700; font-size: calc(40 * var(--u)); margin-top: calc(10 * var(--u)); }
+.status[data-status="confirmado"] { background: #e3f6ec; }
+.status[data-status="confirmado"] .status-valor { color: #12603f; }
+.status[data-status="desqualificado"] { background: #fde8e6; }
+.status[data-status="desqualificado"] .status-valor { color: #9b1c12; }
+
+/* Rodapé */
+.rodape { display: flex; justify-content: space-between; gap: calc(40 * var(--u)); font-size: calc(26 * var(--u)); color: var(--navy-muted); }
+
+/* Troca de cenas */
+.cena { animation: entrar .6s ease both; }
+@keyframes entrar { from { opacity: 0; transform: translateY(calc(16 * var(--u))); } to { opacity: 1; transform: none; } }
+
+#confete { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; }
+
+.offline {
+  position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
+  background: rgba(0,0,0,.55); color: #fff; padding: 8px 18px; border-radius: 999px; font-size: 14px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cena, .nome.revelado, .contador-num.pulsa, .ponto { animation: none !important; }
+}

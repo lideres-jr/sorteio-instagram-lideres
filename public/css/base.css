@@ -1,0 +1,33 @@
+@import url('/fonts/source-serif-4/600.css');
+@import url('/fonts/source-serif-4/700.css');
+@import url('/fonts/figtree/400.css');
+@import url('/fonts/figtree/500.css');
+@import url('/fonts/figtree/600.css');
+
+:root {
+  --navy: #010c44;
+  --navy-2: #0a1759;
+  --navy-line: rgba(255, 255, 255, 0.14);
+  --navy-muted: rgba(225, 230, 248, 0.72);
+  --paper: #f3f4f9;
+  --card: #ffffff;
+  --line: #e2e5ef;
+  --ink: #010c44;
+  --ink-2: #4a5170;
+  --ink-3: #7a8098;
+  --ok: #1f8a5b;
+  --ok-bg: #e6f4ed;
+  --warn: #9a6400;
+  --warn-bg: #fdf3e1;
+  --erro: #b42318;
+  --erro-bg: #fdecea;
+  --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --sans: 'Figtree', 'Segoe UI', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; }
+body { font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+button { font: inherit; cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+[hidden] { display: none !important; }

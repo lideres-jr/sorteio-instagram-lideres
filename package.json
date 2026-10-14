@@ -1,0 +1,17 @@
+{
+  "name": "sorteio-lideres",
+  "version": "1.0.0",
+  "description": "Sorteio via Instagram — Palestra Líderes",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "demo": "node server.js --demo"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "@fontsource/figtree": "^5.3.0",
+    "@fontsource/source-serif-4": "^5.3.0",
+    "express": "^5.3.0"
+  },
+  "private": true
+}

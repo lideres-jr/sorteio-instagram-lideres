@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Telão · Sorteio Líderes</title>
+<link rel="icon" href="/img/logo-jr.png">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/projecao.css">
+</head>
+<body>
+<div class="palco" id="palco" data-fase="espera">
+  <header class="topo">
+    <div class="marca">
+      <img src="/img/logo-jr.png" alt="Jr." class="logo">
+      <span class="evento">Palestra Líderes</span>
+    </div>
+    <div class="pilula"><span class="ponto"></span><span id="pilulaTexto">Sorteio ao vivo</span></div>
+  </header>
+
+  <!-- Espera -->
+  <section class="cena cena-espera" id="cenaEspera">
+    <div class="espera-texto">
+      <div class="sobretitulo">Como participar</div>
+      <h1 class="titulo">Dois passos para entrar no sorteio.</h1>
+      <ol class="passos">
+        <li><span class="passo-num">01</span><span>Comente na publicação fixada do perfil</span></li>
+        <li><span class="passo-num">02</span><span>Poste um Story marcando <span id="perfilMarcar">@lideres</span></span></li>
+      </ol>
+    </div>
+    <div class="contador">
+      <div class="sobretitulo">Comentários até agora</div>
+      <div class="contador-num" id="contadorNum">000</div>
+      <p class="contador-texto">Cada comentário é uma chance. Quem comentar mais, concorre mais.</p>
+    </div>
+  </section>
+
+  <!-- Sorteando / Resultado -->
+  <section class="cena cena-resultado" id="cenaResultado" hidden>
+    <div class="sobretitulo" id="resultadoSobre">Sorteando</div>
+    <div class="nome-caixa"><div class="nome" id="nome"></div></div>
+    <div class="regua"><span class="regua-progresso" id="regua"></span></div>
+    <div class="resultado-rodape" id="resultadoRodape">
+      <p class="resultado-msg" id="resultadoMsg"></p>
+      <div class="status" id="statusCaixa">
+        <div class="status-rotulo">Status</div>
+        <div class="status-valor" id="statusValor">Aguardando confirmação</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="rodape">
+    <span id="rodapeEsq">O resultado sai ao vivo, nesta palestra.</span>
+    <span id="rodapeDir">O Story do(a) sorteado(a) é conferido antes do brinde.</span>
+  </footer>
+</div>
+<canvas id="confete" aria-hidden="true"></canvas>
+<div class="offline" id="offline" hidden>Reconectando ao servidor…</div>
+
+<script src="/js/comum.js"></script>
+<script src="/js/projecao.js"></script>
+</body>
+</html>
